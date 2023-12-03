@@ -3,11 +3,14 @@ const app = express();
 require("dotenv").config();
 
 const configViewEngine = require("./config/configViewEngine");
+const configStaticFile = require("./config/configStaticFile");
 configViewEngine(app);
+configStaticFile(app);
+
 const port = process.env.PORT;
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("home.ejs");
 });
 
 app.listen(port, () => {
